@@ -72,13 +72,17 @@ Send a pull request to this repository with your solution. The title of your pul
 
 ## FAQ
 
+#### How to ensure fair results?
+
+Each submission will be manually verified before its benchmark is run on the benchmark server. We'll also only ever run one single submission at a time to prevent any bias in the results. Additionally, we'll use a consistent, dedicated server to run benchmarks on to ensure that the results are comparable.
+
 #### Why not one billion?
 
 This challenge was inspired by the [1 billion row challenge in Java](https://github.com/gunnarmorling/1brc). The reason we're using only 100 million rows is because this version has a lot more complexity compared to the Java version (date parsing, JSON encoding, array sorting). To prevent the benchmark server from being overloaded, we're limiting the number of rows to 100 million.
 
-#### How to ensure fair results?
+#### What about the JIT?
 
-Each submission will be manually verified before its benchmark is run on the benchmark server. We'll also only ever run one single submission at a time to prevent any bias in the results. Additionally, we'll use a consistent environment for all submissions to ensure that the results are comparable.
+While testing this challenge, the JIT didn't seem to offer any significant performance boost. Furthermore, on occasion it caused segfaults. This led to the decision for the JIT to be disabled for this challenge.
 
 #### What kind of server is used for the benchmark?
 
