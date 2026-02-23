@@ -68,9 +68,17 @@ Your parser should store the following output in `$outputPath` as a JSON file:
 
 ## Submitting your solution
 
-Send a pull request to this repository with your solution. The title of your pull request should simply be your GitHub's username. If your solution validates, we'll run it on the benchmark server and store your time in [leaderboard.csv](./leaderboard.csv). You can continue to improve your solution, but keep in mind that benchmarks are manually triggered and you might need to wait a while before your results are published.
+Send a pull request to this repository with your solution. The title of your pull request should simply be your GitHub's username. If your solution validates, we'll run it on the benchmark server and store your time in [leaderboard.csv](./leaderboard.csv). You can continue to improve your solution, but keep in mind that benchmarks are manually triggered, and you might need to wait a while before your results are published.
 
 ## FAQ
+
+#### What can I win?
+
+TODO
+
+#### What kind of server is used for the benchmark?
+
+TODO
 
 #### How to ensure fair results?
 
@@ -83,7 +91,3 @@ This challenge was inspired by the [1 billion row challenge in Java](https://git
 #### What about the JIT?
 
 While testing this challenge, the JIT didn't seem to offer any significant performance boost. Furthermore, on occasion it caused segfaults. This led to the decision for the JIT to be disabled for this challenge.
-
-#### What kind of server is used for the benchmark?
-
-TODO
