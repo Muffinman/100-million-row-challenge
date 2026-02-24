@@ -14,6 +14,8 @@ php tempest data:generate
 
 By default, the `data:generate` command will generate a dataset of 1,000,000 visits. The real benchmark will use 100,000,000 visits. You can adjust the number of visits as well by running `php tempest data:generate 100_000_000` Next, implement your solution in `app/Parser.php`:
 
+Also, the generator will use a seeded randomizer so that, for local development, you work on the same dataset as others. You can overwrite the seed with the `data:generate --seed=123456` parameter, and you can also pass in the `data:generate --no-seed` parameter for an unseeded random data set. The real data set was generated without a seed and is secret.
+
 ```php
 final class Parser
 {
@@ -23,8 +25,6 @@ final class Parser
     }
 }
 ```
-
-By default, the generator will use a seeded randomizer so that you work on the same dataset as others. You can overwrite the seed with the `data:generate --seed=123456` parameter, and you can also pass in the `data:generate --no-seed` parameter for an unseeded random data set. The real data set was generated without a seed.
 
 You can always run your implementation to check your work:
 
