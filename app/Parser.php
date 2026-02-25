@@ -90,7 +90,8 @@ final class Parser
     protected function parseLine(string $line, array &$data): void
     {
         $comma_pos = strpos($line, ',');
-        $url = substr($line, 19, $comma_pos - 19);
+        $third_slash_pos = strpos($line, '/', 8); // Offset 8 to skip http:// or https://
+        $url = substr($line, $third_slash_pos, $comma_pos - $third_slash_pos);
         $date = substr($line, $comma_pos + 1, 10);
 
         if (! isset($data[$url])) {
