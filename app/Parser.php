@@ -10,7 +10,7 @@ final class Parser
     protected string $inputPath;
     protected string $outputPath;
 
-    protected const int THREADS = 4;
+    protected const int THREADS = 2;
 
     public function parse(string $inputPath, string $outputPath): void
     {
@@ -25,6 +25,7 @@ final class Parser
     public function process(): void
     {
         $splits = $this->calcSplits();
+
         for ($i = 0; $i < self::THREADS; $i++) {
             $pid = pcntl_fork();
 
@@ -116,6 +117,7 @@ final class Parser
             // This is clearly dangerous but seems to always validate, so I'm running with it
             // If the same URL & date happened to appear in different splits then it would get overwritten
             $finalData = array_merge_recursive($finalData, $childData);
+            unset($childData);
 
             unlink($childFile);
         }
@@ -136,5 +138,4 @@ final class Parser
     {
         return function_exists('igbinary_unserialize') ? igbinary_unserialize($data) : unserialize($data);
     }
-
 }
