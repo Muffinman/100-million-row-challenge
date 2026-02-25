@@ -17,13 +17,14 @@ final class Parser
         $this->inputPath = $inputPath;
         $this->outputPath = $outputPath;
 
+        ini_set('memory_limit', '1024M');
+
         $this->process();
     }
 
     public function process(): void
     {
         $splits = $this->calcSplits();
-
         for ($i = 0; $i < self::THREADS; $i++) {
             $pid = pcntl_fork();
 
