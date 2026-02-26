@@ -114,10 +114,19 @@ final class Parser
             $childFile = $this->outputPath . '.' . $i;
             $childData =  $this->unserialize(file_get_contents($childFile));
 
-            // This is clearly dangerous but seems to always validate, so I'm running with it
-            // If the same URL & date happened to appear in different splits then it would get overwritten
-            $finalData = array_merge_recursive($finalData, $childData);
-            unset($childData);
+            foreach ($childData as $url => $dates) {
+                if (! isset($finalData[$url])) {
+                    $finalData[$url] = [];
+                }
+
+                foreach ($dates as $date => $value) {
+                    if (! isset($finalData[$url][$date])) {
+                        $finalData[$url][$date] = 0;
+                    }
+
+                    $finalData[$url][$date] += $value;
+                }
+            }
 
             unlink($childFile);
         }
